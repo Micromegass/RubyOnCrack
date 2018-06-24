@@ -1,10 +1,17 @@
-<h1> Showing all Questions </h1>
+<h1 class="heading-questions"> Showing all Questions </h1>
 
+<div class="container">
+ <div class="row">
+   <div class="col-sm-10 col-sm-offset-1">
 <% @questions.each do  |question| %>
    <%= question.title %> <br>
    <%= question.description %>
-    <%= link_to "Edit Question", edit_question_path(question) %>
-    <%= link_to "Delete Question", question, method: :delete, data: {confirm: "Are you sure you'd like to delete this post?"}  %>
+   <%=  link_to "New Question", new_question_path, class:"btn btn-success"%>
+   <%= link_to "Edit Question", edit_question_path(question), class:"btn btn-primary" %>
+   <%= link_to "Delete Question", question, class:"btn btn-warning", method: :delete, data: {confirm: "Are you sure you'd like to delete this post?"}  %>
 <% end  %>
 
-<%=  link_to "New Question", new_question_path %>
+
+</div>
+ </div>
+  </div>

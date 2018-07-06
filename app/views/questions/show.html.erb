@@ -13,7 +13,7 @@
     <% end  %>
      <!-- end of displaying answers-->
 
-
+    <% if signed_in? %>
     <h2>Participate and put your own Answer</h2>
     <!--This is the form for answers.-->
     <%= form_for @answer do |f| %>
@@ -23,7 +23,8 @@
     </div>
     <div class="text-right">
     <%= f.submit 'Submit Answer', class: 'btn btn-success' %>
-   <% end  %>
+   <% end %>
+   <% end %> <!-- end for if -->
     <!--form for answers ends here-->
 
   </div> <!--end div col-->

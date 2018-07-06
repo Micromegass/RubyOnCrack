@@ -6,9 +6,12 @@
 <% @questions.each do  |question| %>
    <%= link_to question.title, question %> 
     <p> <%= question.description %> </p>
+
+<% if signed_in? %>
    <%= link_to "New Question", new_question_path, class:"btn btn-success"%>
    <%= link_to "Edit Question", edit_question_path(question), class:"btn btn-primary" %>
    <%= link_to "Delete Question", question, class:"btn btn-warning", method: :delete, data: {confirm: "Are you sure you'd like to delete this post?"}  %>
+<% end %>
 <% end  %>
    </div>
   </div>

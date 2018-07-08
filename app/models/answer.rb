@@ -11,8 +11,8 @@
 #
 
 class Answer < ApplicationRecord
-  belongs_to :question, dependent: :destroy
+  belongs_to :question
   belongs_to :user
 
-  validates :body, presence: true
+  validates :body, presence: true, length: {minimum:1, maximum:1000}
 end

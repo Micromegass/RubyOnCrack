@@ -7,9 +7,66 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
   </head>
 
   <body>
+
+
+<nav class="custom navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <% if signed_in? %>
+          <%= link_to "#{current_user.name} on Crack", root_path, class: "navbar-brand" %>
+          <% else %>
+          <%= link_to "Ruby on Crack", root_path, class: "navbar-brand" %>
+          <% end %>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+
+          </ul>
+          <ul class="nav navbar-nav navbar-left">
+              <% if signed_in? %>
+            <li>
+              <a href="#" class="avatar">
+                <img src="<%= Gravatar.new(" #{current_user.email} ").image_url %>" class="img-circle" />
+              </a>
+            </li>
+            <li>
+              <%= link_to "#{fa_icon("feather")}".html_safe, new_question_path, :title => 'Pose New Question', :rel => 'tooltip', "data-placement" => "bottom" %>
+            </li>
+            <li>
+              <%= link_to "#{fa_icon("sign-out-alt")}".html_safe, logout_path, method: :delete, :title => 'Log out', :rel => 'tooltip', "data-placement" => "bottom"  %>
+            </li>
+            <% else %>
+              <li><%= link_to "#{fa_icon("user-circle")} Register".html_safe, new_user_path %> </li>
+              <li><%= link_to "#{fa_icon("gem")} Login".html_safe, login_path  %></li>
+              <% end %>
+                </ul>
+           <form class="navbar-form navbar-right" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+          </form>
+        </div><!-- /.navbar-collapse -->
+      </div>
+    </div>
+  </div><!-- /.container -->
+</nav>
+
 
 <div class="flash">
   <% flash.each do |key, value| %>
@@ -17,9 +74,6 @@
   <% end %>
 </div>
 
-<% if signed_in? %>
-<%= link_to  "logout", logout_path, method: :delete %>
-<% end  %>
     <%= yield %>
   </body>
 </html>

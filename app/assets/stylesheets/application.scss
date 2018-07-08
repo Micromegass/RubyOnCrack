@@ -11,9 +11,12 @@
  * It is generally better to create a new file per style scope.
  *
  */
+ 
+@import "font-awesome";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "questions";
+
 
 
 
@@ -21,6 +24,164 @@ body,
 html {
     height: 100%;
     background-color: darkgray;
+    padding-top: 25px;
+}
+
+//gravatar styling
+.avatar{
+    padding-top: 7px;
+    padding-bottom: 7px;
+    img {width: 37px;}
 }
 
 
+
+// navbar styling
+    $bgDefault: #a92056;
+    $bgHighlight: #4c4151;
+    $colDefault: #bbe8f4;
+    $colHighlight: #ecdbff;
+    $dropDown: true;
+    .navbar-inverse {
+        background-color: $bgDefault;
+        border-color: $bgHighlight;
+        .navbar-brand {
+            color: $colDefault;
+            &:hover,
+            &:focus {
+                color: $colHighlight;
+            }
+        }
+        .navbar-text {
+            color: $colDefault;
+        }
+        .navbar-nav {
+            >li {
+                >a {
+                    color: $colDefault;
+                    &:hover,
+                    &:focus {
+                        color: $colHighlight;
+                    }
+                }
+                @if $dropDown {
+                    >.dropdown-menu {
+                        background-color: $bgDefault;
+                        >li {
+                            >a {
+                                color: $colDefault;
+                                &:hover,
+                                &:focus {
+                                    color: $colHighlight;
+                                    background-color: $bgHighlight;
+                                }
+                            }
+                            &.divider {
+                                background-color: $bgHighlight;
+                            }
+                        }
+                    }
+                }
+            }
+            @if $dropDown {
+                .open .dropdown-menu>.active {
+                    >a,
+                    >a:hover,
+                    >a:focus {
+                        color: $colHighlight;
+                        background-color: $bgHighlight;
+                    }
+                }
+            }
+            >.active {
+                >a,
+                >a:hover,
+                >a:focus {
+                    color: $colHighlight;
+                    background-color: $bgHighlight;
+                }
+            }
+            >.open {
+                >a,
+                >a:hover,
+                >a:focus {
+                    color: $colHighlight;
+                    background-color: $bgHighlight;
+                }
+            }
+        }
+        .navbar-toggle {
+            border-color: $bgHighlight;
+            &:hover,
+            &:focus {
+                background-color: $bgHighlight;
+            }
+            .icon-bar {
+                background-color: $colDefault;
+            }
+        }
+        .navbar-collapse,
+        .navbar-form {
+            border-color: $colDefault;
+        }
+        .navbar-link {
+            color: $colDefault;
+            &:hover {
+                color: $colHighlight;
+            }
+        }
+    }
+
+    @media (max-width: 767px) {
+        .navbar-default .navbar-nav .open .dropdown-menu {
+            >li>a {
+                color: $colDefault;
+                &:hover,
+                &:focus {
+                    color: $colHighlight;
+                }
+            }
+            >.active {
+                >a,
+                >a:hover,
+                >a:focus {
+                    color: $colHighlight;
+                    background-color: $bgHighlight;
+                }
+            }
+        }
+    }
+//navbar styling end
+
+
+.icon a {
+
+    font-size: 40px;
+    color: #a92056;
+    padding-bottom: 30px;
+
+}
+
+.icon {
+
+    padding-left: 220px; 
+}
+
+.links a {
+    font-size: 20px;
+    color: black; 
+    margin-right: 10px;
+
+
+}
+
+.links {
+
+  text-align: center;
+
+}
+
+.flash {
+
+    padding-top: 18px;
+}

@@ -5,8 +5,12 @@
     <h1 class="heading"><%= @question.title%> </h1><br>
     <%= @question.description %>
 
-    
+    <% if @question.answers.count == 0  %>
+   <h2> No answers so far. Be the first one to help out </h2>
+    <% else %>
     <h2> Up until now the answers are: </h2>
+    <% end  %>
+
       <!-- Here the answers are displayed-->
     <% @question.answers.each do |answer| %>
         <p class="well"><%= answer.body %> </p>
@@ -18,6 +22,7 @@
     <!--This is the form for answers.-->
     <%= form_for @answer do |f| %>
     <%= f.hidden_field :question_id, value: @question[:id] %>
+    <%= f.hidden_field :user_id, value: current_user[:id] if !current_user.nil? %>
     <div class="form-group">
     <%= f.text_area :body, rows: 5, class: "form-control" %>
     </div>

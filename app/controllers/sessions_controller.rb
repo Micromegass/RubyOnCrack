@@ -9,6 +9,7 @@ before_action :public_access, except: [:destroy]
     flash[:success] = "Welcome #{current_user.name}, you successfully logged in!"
     redirect_to root_path
   else
+    flash.now[:danger] = "Tu email y/o contraseña son inválidas. Intenta nuevamente."
     render :new
   end
 end

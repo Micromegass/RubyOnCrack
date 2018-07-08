@@ -16,12 +16,12 @@ before_action :private_access, except: [:index, :show]
 
     def create
       @question = Question.new(questions_params)
+      @question.user = current_user
       if @question.save
-        flash[:success] = "Fantastic, you posed a new question. Surely someone answers soon, stay tuned..."
+        flash[:success] = "Fantastic #{@current_user.username} you posed a new question. Surely someone answers soon, stay tuned..."
         redirect_to root_path
       else
-        flash[:alert] = "Couldn't create question. Please try again..."
-        redirect_to root_path
+         render :new
       end
     end
 
@@ -33,10 +33,10 @@ before_action :private_access, except: [:index, :show]
     def update
       @question = Question.find(params[:id])
       if @question.update(questions_params)
-      flash[:success] = "Bravo, you updated your question!"
+      flash[:success] = "Bravo #{@current_user.username}, you updated your question!"
       redirect_to root_path
       else
-      flash[:alert] = "Ups, something went wrong. Please try again..."
+      flash[:danger] = "Ups, something went wrong. Please try again..."
       render :new
       end
     end
@@ -45,16 +45,17 @@ before_action :private_access, except: [:index, :show]
     def destroy
      @question = Question.find(params[:id])
       if @question.destroy
-      redirect_to root_path, notice: "Ok, question deleted"
+      flash[:danger] = "Ok #{@current_user.username}, question was deleted!"
+      redirect_to root_path
       else 
-      flash[:alert] = "Ups, something went wrong. Please try again..."
+      flash[:danger] = "Ups, something went wrong. Please try again..."
       redirect_to root_path
       end 
     end
 
     private
         def questions_params
-            params.require(:question).permit(:title, :description)
+            params.require(:question).permit(:title, :description, :answer_id, :user_id)
         end 
 
 end

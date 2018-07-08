@@ -27,7 +27,7 @@
             <span class="icon-bar"></span>
           </button>
           <% if signed_in? %>
-          <%= link_to "#{current_user.name} on Crack", root_path, class: "navbar-brand" %>
+          <%= link_to "#{current_user.username} on Crack", root_path, class: "navbar-brand" %>
           <% else %>
           <%= link_to "Ruby on Crack", root_path, class: "navbar-brand" %>
           <% end %>

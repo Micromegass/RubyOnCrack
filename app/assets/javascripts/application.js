@@ -13,4 +13,7 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+jQuery(function ($) {
+    $('a').tooltip();
+});
 //= require_tree .

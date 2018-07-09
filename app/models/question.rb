@@ -11,10 +11,12 @@
 #
 
 class Question < ApplicationRecord
-has_many :answers, dependent: :destroy
-belongs_to :user
-
 validates :title, presence: true
 validates :description, presence: true, length: {minimum:10, maximum:10000}
+
+belongs_to :user, dependent: :destroy
+has_many :comments, as: :commentable, dependent: :destroy
+has_many :answers, dependent: :destroy
+
 
 end

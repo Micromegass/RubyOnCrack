@@ -10,12 +10,11 @@ class AnswersController < ApplicationController
         flash[:success] = "You responded. Thanks for helping out!"
         redirect_to question_path(@answer.question_id)
       else 
-        flash[:danger] = "An error occured. Answer can't be left blank"
+        flash[:danger] = @answer.errors.full_messages.to_sentence
         redirect_to question_path(@answer.question_id)
       end
     end
 
- 
 
     private 
     def answer_params

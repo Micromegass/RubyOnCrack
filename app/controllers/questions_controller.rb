@@ -12,6 +12,7 @@ before_action :private_access, except: [:index, :show]
      def show
         @question = Question.find(params[:id])
         @answer = Answer.new        
+        @comment = Comment.new
      end 
 
     def create
@@ -55,7 +56,7 @@ before_action :private_access, except: [:index, :show]
 
     private
         def questions_params
-            params.require(:question).permit(:title, :description, :answer_id, :user_id)
+            params.require(:question).permit(:title, :description, :answer_id, :user_id, :body)
         end 
 
 end

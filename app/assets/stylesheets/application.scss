@@ -23,8 +23,9 @@
 body,
 html {
     height: 100%;
-    background-color: darkgray;
+    background-color: #181818;
     padding-top: 25px;
+    color: whitesmoke;
 }
 
 //gravatar styling
@@ -156,22 +157,23 @@ html {
 
 .icon a {
 
-    font-size: 40px;
+    font-size: 30px;
     color: #a92056;
     padding-bottom: 30px;
 
 }
 
-.icon {
-
-    padding-left: 220px; 
-}
 
 .links a {
-    font-size: 20px;
-    color: black; 
+    font-size: 25px;
+    color: #a92056;
     margin-right: 10px;
 
+
+}
+
+.fa-gem {
+        color: #a92056;
 
 }
 
@@ -184,4 +186,35 @@ html {
 .flash {
 
     padding-top: 18px;
+}
+
+
+.well {
+
+    background-color: #4c4151;
+}
+
+.q-description {
+
+
+    background-color: #4c4151;
+    padding: 30px;
+    border-radius: 20px;
+    border-style: groove;
+    border-color: aqua;    
+
+}
+
+
+
+.q-title a {
+
+text-decoration: none; 
+color: whitesmoke; 
+}
+
+.q-title {
+
+    text-align: center;
+    font-size: 23px;
 }

@@ -12,10 +12,13 @@
 #
 
 class User < ApplicationRecord
+    has_secure_password validations: false 
+
     has_many :answers, dependent: :destroy
     has_many :questions, dependent: :destroy
+    has_many :comments
 
-    has_secure_password validations: false 
+
 
     validates :email, uniqueness: true, format: /@/
     validates :password, presence: true, on: :create

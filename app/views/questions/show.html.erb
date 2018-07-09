@@ -11,42 +11,65 @@
     <!-- showing comments on questions-->
      <h3>Comments </h3>
   <% @question.comments.each do |comment| %>
-  <div class="well">
-    <%=comment.body %>
-  </div>
+    <div class="well">
+      <%=comment.body %>
+    </div>
   <% end  %>
     <!-- end showing comments on questions-->
 
 
     <!--form for the Question comments-->
       <% if signed_in? %>
-  <%= form_for @comment, url: comments_path do |f| %>
-  <%= f.hidden_field :commentable_id, value: @question[:id] %>
-  <%= f.hidden_field :commentable_type, value: "Question" %>
-  <%= f.hidden_field :user_id, value: current_user[:id] if !current_user.nil? %>
-  <%= f.text_area :body, rows: 3, placeholder: "Add a comment", class:"form-control" %> <br>
-  <div class="text-right">
-    <%= f.submit 'Comment', class: 'btn btn-success' %>
-  </div>
-  <% end %>
-  <% end %>
-
+      <%= form_for @comment, url: comments_path do |f| %>
+      <%= f.hidden_field :commentable_id, value: @question[:id] %>
+      <%= f.hidden_field :commentable_type, value: "Question" %>
+      <%= f.hidden_field :user_id, value: current_user[:id] if !current_user.nil? %>
+      <%= f.text_area :body, rows: 3, placeholder: "Add a comment", class:"form-control" %> <br>
+      <div class="text-right">
+      <%= f.submit 'Comment', class: 'btn btn-success' %>
+     </div>
+     <% end %>
+     <% end %>
     <!--end form for the Question comments-->
 
 
-    <!-- Selecting which heading appears-->
-    <% if @question.answers.count == 0  %>
-   <h2> No answers so far. Be the first one to help out </h2>
-    <% else %>
-    <h2> Up until now the answers are: </h2>
-    <% end  %>
-    <!-- Selection end-->
+  
 
-      <!-- Here the answers are displayed-->
+    <h2>Answers</h2>
+     <!-- Here the answers are displayed-->
     <% @question.answers.each do |answer| %>
         <p class="well"><%= answer.body %> </p>
-    <% end  %>
      <!-- end of displaying answers-->
+
+    <!-- showing comments on answer-->
+    <h3>Comments: </h3>
+     <% answer.comments.each do |comment| %>
+    <div class="well" >
+      <%=comment.body %>
+    </div>
+     <% end  %>
+    <!-- end showing comments on answer-->
+
+    <!--form for the Answer comments-->
+      <% if signed_in? && @question.answers.exists?%>
+      <%= form_for @comment, url: comments_path do |f| %>
+      <%= f.hidden_field :commentable_id, value: answer[:id] %>
+      <%= f.hidden_field :commentable_type, value: "Answer" %>
+      <%= f.hidden_field :user_id, value: current_user[:id] if !current_user.nil? %>
+      <%= f.text_area :body, rows: 3, placeholder: "Add a comment", class:"form-control" %> <br>
+      <div class="text-right">
+      <%= f.submit 'Comment', class: 'btn btn-success' %>
+     </div>
+     <% end %>
+     <% end %>
+     <% end %>
+    <!--end form for Answer comments-->
+
+
+    <% if @question.answers.count == 0 %>
+    <p>Nobody could solve this problem up until now. We need your help. If you can answer please help out. Otherwise call a friend who knows</p>
+    <% end %>
+
 
     <% if signed_in? %>
     <h2>Participate and put your own Answer</h2>

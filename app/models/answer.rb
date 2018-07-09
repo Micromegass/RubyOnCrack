@@ -13,8 +13,8 @@
 class Answer < ApplicationRecord
   validates :body, presence: true, length: {minimum:1, maximum:1000}
 
-  belongs_to :user, dependent: :destroy
-  belongs_to :question, dependent: :destroy
+  belongs_to :user
+  belongs_to :question
   has_many :comments, as: :commentable, dependent: :destroy
   
 end

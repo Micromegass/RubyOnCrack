@@ -5,18 +5,19 @@
 
     <!-- showing questions-->
     <h1 class="heading"><%= @question.title%> </h1><br>
+    <div class="q-description">
     <%= @question.description %>
+    </div>
     <!-- end showing questions-->
 
     <!-- showing comments on questions-->
      <h3>Comments </h3>
-  <% @question.comments.each do |comment| %>
+    <% @question.comments.each do |comment| %>
     <div class="well">
       <%=comment.body %>
     </div>
-  <% end  %>
+  <% end  %>  <!--end comments each do-->
     <!-- end showing comments on questions-->
-
 
     <!--form for the Question comments-->
       <% if signed_in? %>
@@ -26,19 +27,18 @@
       <%= f.hidden_field :user_id, value: current_user[:id] if !current_user.nil? %>
       <%= f.text_area :body, rows: 3, placeholder: "Add a comment", class:"form-control" %> <br>
       <div class="text-right">
-      <%= f.submit 'Comment', class: 'btn btn-success' %>
+      <%= f.button(:class => "btn btn-success") do %>
+      <%= fa_icon("check") %>
+      <% end %> <!--end button-->
      </div>
-     <% end %>
-     <% end %>
+       <% end %>  <!--end comments path-->
+     <% end %>  <!--end signed_in-->
     <!--end form for the Question comments-->
-
-
-  
 
     <h2>Answers</h2>
      <!-- Here the answers are displayed-->
     <% @question.answers.each do |answer| %>
-        <p class="well"><%= answer.body %> </p>
+        <div class="q-description"><%= answer.body %> </div>
      <!-- end of displaying answers-->
 
     <!-- showing comments on answer-->
@@ -47,7 +47,7 @@
     <div class="well" >
       <%=comment.body %>
     </div>
-     <% end  %>
+     <% end  %><!--end answer.comments.each do-->
     <!-- end showing comments on answer-->
 
     <!--form for the Answer comments-->
@@ -58,38 +58,44 @@
       <%= f.hidden_field :user_id, value: current_user[:id] if !current_user.nil? %>
       <%= f.text_area :body, rows: 3, placeholder: "Add a comment", class:"form-control" %> <br>
       <div class="text-right">
-      <%= f.submit 'Comment', class: 'btn btn-success' %>
-     </div>
-     <% end %>
-     <% end %>
-     <% end %>
-    <!--end form for Answer comments-->
-
+      <%= f.button(:class => "btn btn-success") do %>
+      <%= fa_icon("check") %>    
+           <% end  %>  <!--end button-->
+         </div>
+         <br>
+         <% end %> <!--end comments path-->
+       <% end %> <!--end signed in-->
+     <% end %> <!--end each do-->
+    <!--finish form for Answer comments-->
 
     <% if @question.answers.count == 0 %>
     <p>Nobody could solve this problem up until now. We need your help. If you can answer please help out. Otherwise call a friend who knows</p>
-    <% end %>
+    <% end %> <!--end question.answers.count-->
 
-
+    <!-- form for answers.-->
     <% if signed_in? %>
     <h2>Participate and put your own Answer</h2>
-    <!--This is the form for answers.-->
     <%= form_for @answer do |f| %>
     <%= f.hidden_field :question_id, value: @question[:id] %>
     <%= f.hidden_field :user_id, value: current_user[:id] if !current_user.nil? %>
     <div class="form-group">
-    <%= f.text_area :body, rows: 5, class: "form-control" %>
+    <%= f.text_area :body, rows: 5, class: "form-control", placeholder:"Write your Answer"%>
     </div>
     <div class="text-right">
-    <%= f.submit 'Submit Answer', class: 'btn btn-success' %>
-   <% end %>
+    <%= f.button(:class => "btn btn-success") do %>
+    <%= fa_icon("check") %>
+          <% end  %>  <!--end button-->
+    </div>     
+      <% end %> <!--end answer do-->
    <% end %> <!-- end for if -->
     <!--form for answers ends here-->
+
+    <div class="icon">
+      <%= link_to "#{fa_icon("chevron-circle-left")}".html_safe, root_path %>
+    </div>
 
   </div> <!--end div col-->
  </div> <!--end div row-->
 </div>  <!--end div container-->
 
-<div class="icon">
-   <%= link_to "#{fa_icon("chevron-circle-left")}".html_safe, root_path %>
-</div>
+

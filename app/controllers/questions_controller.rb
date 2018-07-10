@@ -59,8 +59,9 @@ before_action :private_access, except: [:index, :show]
     def voteup
       question = Question.find(params[:question_id])
       question.votes.create(user: current_user)
-      flash[:success] = "Thanks for voting!"
-      redirect_to root_path
+
+      flash[:success] = "Thanks #{current_user.username} for voting!"
+      redirect_to question_path
     end 
 
 
@@ -69,7 +70,7 @@ before_action :private_access, except: [:index, :show]
       question.votes.where(user: current_user).take.try(:destroy)
       
       flash[:danger] = "Vote deleted!"
-      redirect_to root_path
+      redirect_to question_path
 
     end 
 

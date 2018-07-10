@@ -42,18 +42,18 @@
               <% if signed_in? %>
             <li>
               <a href="#" class="avatar">
-                <img src="<%= Gravatar.new(" #{current_user.email} ").image_url %>" class="img-circle" />
+                <img src="<%= Gravatar.new("#{current_user.email}").image_url %>" class="img-circle" />
               </a>
             </li>
-            <li>
-              <%= link_to "#{fa_icon("feather")}".html_safe, new_question_path, :title => 'Pose New Question', :rel => 'tooltip', "data-placement" => "bottom" %>
+            <li class="navicon">
+              <%= link_to "#{fa_icon("feather-alt")}".html_safe, new_question_path, :title => 'Pose New Question', :rel => 'tooltip', "data-placement" => "bottom" %>
             </li>
-            <li>
+            <li class="navicon">
               <%= link_to "#{fa_icon("sign-out-alt")}".html_safe, logout_path, method: :delete, :title => 'Log out', :rel => 'tooltip', "data-placement" => "bottom"  %>
             </li>
             <% else %>
               <li><%= link_to "#{fa_icon("user-circle")} Register".html_safe, new_user_path %> </li>
-              <li><%= link_to "#{fa_icon("gem")} Login".html_safe, login_path  %></li>
+              <li><%= link_to "#{fa_icon("chess-queen")} Login".html_safe, login_path  %></li>
               <% end %>
                 </ul>
            <form class="navbar-form navbar-right" role="search">

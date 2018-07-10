@@ -9,18 +9,18 @@
     <%= @question.description %>
     </div>
     <!-- end showing questions-->
-
+    <br>
     <!--  showing votes questions-->
     <% if signed_in? %>
     <% if @question.voted_by? current_user%>
-    <%= link_to question_vote_path(@question), method: :delete, class: "product-upvote upvote-active" do %>
-    <span class="upvote-arrow"></span>
-    <span class="upvote-count"><%= @question.votes.count %></span>
+    <%= link_to question_vote_path(@question), method: :delete, class: "question-upvote upvote-active" do %>
+    <div class="voted-heart"><i class="fas fa-heartbeat" style="color:red"></i> 
+    <%= @question.votes.count%></div>
     <% end %>    <!--  end question vote path do-->
     <% else %>   <!-- if not voted_by user-->
-    <%= link_to question_vote_path(@question), method: :post, class: "product-upvote" do %>
-    <span class="upvote-arrow"></span>
-    <span class="upvote-count"><%= @question.votes.count %></span>
+    <%= link_to question_vote_path(@question), method: :post, class: "question-upvote" do %>
+    <div class="heart"><i class="far fa-heart" style="color:yellowgreen"></i> 
+   <%= @question.votes.count %></div>
     <% end %>   <!--  question_vote_path do-->
     <% end %>   <!-- end voted_by-->
     <% else %>  <!--  if user is not signed in-->
@@ -48,7 +48,7 @@
       <%= f.text_area :body, rows: 3, placeholder: "Add a comment", class:"form-control" %> <br>
       <div class="text-right">
       <%= f.button(:class => "btn btn-success") do %>
-      <%= fa_icon("check") %>
+      <%= fa_icon("comment-dots") %>
       <% end %> <!--end button-->
      </div>
        <% end %>  <!--end comments path-->
@@ -60,6 +60,15 @@
     <% @question.answers.each do |answer| %>
         <div class="q-description"><%= answer.body %> </div>
      <!-- end of displaying answers-->
+
+
+
+
+    
+
+
+
+
 
     <!-- showing comments on answer-->
     <h3>Comments: </h3>
@@ -79,7 +88,7 @@
       <%= f.text_area :body, rows: 3, placeholder: "Add a comment", class:"form-control" %> <br>
       <div class="text-right">
       <%= f.button(:class => "btn btn-success") do %>
-      <%= fa_icon("check") %>    
+      <%= fa_icon("comment-dots") %>    
            <% end  %>  <!--end button-->
          </div>
          <br>

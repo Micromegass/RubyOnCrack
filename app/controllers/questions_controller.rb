@@ -77,7 +77,7 @@ before_action :private_access, except: [:index, :show]
 
     private
         def questions_params
-            params.require(:question).permit(:title, :description, :answer_id, :user_id, :body)
+            params.require(:question).permit(:title, :description, :answer_id, :user_id, :body, :votes)
         end 
 
 end

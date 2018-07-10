@@ -11,15 +11,11 @@
  * It is generally better to create a new file per style scope.
  *
  */
- 
+
 @import "font-awesome";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "questions";
-
-
-
-
 body,
 html {
     height: 100%;
@@ -29,120 +25,63 @@ html {
 }
 
 //gravatar styling
-.avatar{
+.avatar {
     padding-top: 7px;
     padding-bottom: 7px;
-    img {width: 37px;}
+    img {
+        width: 37px;
+    }
 }
 
-
-
 // navbar styling
-    $bgDefault: #a92056;
-    $bgHighlight: #4c4151;
-    $colDefault: #bbe8f4;
-    $colHighlight: #ecdbff;
-    $dropDown: true;
-    .navbar-inverse {
-        background-color: $bgDefault;
-        border-color: $bgHighlight;
-        .navbar-brand {
-            color: $colDefault;
-            &:hover,
-            &:focus {
-                color: $colHighlight;
-            }
-        }
-        .navbar-text {
-            color: $colDefault;
-        }
-        .navbar-nav {
-            >li {
-                >a {
-                    color: $colDefault;
-                    &:hover,
-                    &:focus {
-                        color: $colHighlight;
-                    }
-                }
-                @if $dropDown {
-                    >.dropdown-menu {
-                        background-color: $bgDefault;
-                        >li {
-                            >a {
-                                color: $colDefault;
-                                &:hover,
-                                &:focus {
-                                    color: $colHighlight;
-                                    background-color: $bgHighlight;
-                                }
-                            }
-                            &.divider {
-                                background-color: $bgHighlight;
-                            }
-                        }
-                    }
-                }
-            }
-            @if $dropDown {
-                .open .dropdown-menu>.active {
-                    >a,
-                    >a:hover,
-                    >a:focus {
-                        color: $colHighlight;
-                        background-color: $bgHighlight;
-                    }
-                }
-            }
-            >.active {
-                >a,
-                >a:hover,
-                >a:focus {
-                    color: $colHighlight;
-                    background-color: $bgHighlight;
-                }
-            }
-            >.open {
-                >a,
-                >a:hover,
-                >a:focus {
-                    color: $colHighlight;
-                    background-color: $bgHighlight;
-                }
-            }
-        }
-        .navbar-toggle {
-            border-color: $bgHighlight;
-            &:hover,
-            &:focus {
-                background-color: $bgHighlight;
-            }
-            .icon-bar {
-                background-color: $colDefault;
-            }
-        }
-        .navbar-collapse,
-        .navbar-form {
-            border-color: $colDefault;
-        }
-        .navbar-link {
-            color: $colDefault;
-            &:hover {
-                color: $colHighlight;
-            }
+$bgDefault: #a92056;
+$bgHighlight: #4c4151;
+$colDefault: #bbe8f4;
+$colHighlight: #ecdbff;
+$dropDown: true;
+.navbar-inverse {
+    background-color: $bgDefault;
+    border-color: $bgHighlight;
+    .navbar-brand {
+        color: $colDefault;
+        &:hover,
+        &:focus {
+            color: $colHighlight;
         }
     }
-
-    @media (max-width: 767px) {
-        .navbar-default .navbar-nav .open .dropdown-menu {
-            >li>a {
+    .navbar-text {
+        color: $colDefault;
+    }
+    .navbar-nav {
+        >li {
+            >a {
                 color: $colDefault;
                 &:hover,
                 &:focus {
                     color: $colHighlight;
                 }
             }
-            >.active {
+            @if $dropDown {
+                >.dropdown-menu {
+                    background-color: $bgDefault;
+                    >li {
+                        >a {
+                            color: $colDefault;
+                            &:hover,
+                            &:focus {
+                                color: $colHighlight;
+                                background-color: $bgHighlight;
+                            }
+                        }
+                        &.divider {
+                            background-color: $bgHighlight;
+                        }
+                    }
+                }
+            }
+        }
+        @if $dropDown {
+            .open .dropdown-menu>.active {
                 >a,
                 >a:hover,
                 >a:focus {
@@ -151,71 +90,150 @@ html {
                 }
             }
         }
+        >.active {
+            >a,
+            >a:hover,
+            >a:focus {
+                color: $colHighlight;
+                background-color: $bgHighlight;
+            }
+        }
+        >.open {
+            >a,
+            >a:hover,
+            >a:focus {
+                color: $colHighlight;
+                background-color: $bgHighlight;
+            }
+        }
     }
+    .navbar-toggle {
+        border-color: $bgHighlight;
+        &:hover,
+        &:focus {
+            background-color: $bgHighlight;
+        }
+        .icon-bar {
+            background-color: $colDefault;
+        }
+    }
+    .navbar-collapse,
+    .navbar-form {
+        border-color: $colDefault;
+    }
+    .navbar-link {
+        color: $colDefault;
+        &:hover {
+            color: $colHighlight;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu {
+        >li>a {
+            color: $colDefault;
+            &:hover,
+            &:focus {
+                color: $colHighlight;
+            }
+        }
+        >.active {
+            >a,
+            >a:hover,
+            >a:focus {
+                color: $colHighlight;
+                background-color: $bgHighlight;
+            }
+        }
+    }
+}
+
 //navbar styling end
-
-
 .icon a {
-
     font-size: 30px;
     color: #a92056;
     padding-bottom: 30px;
-
 }
-
 
 .links a {
     font-size: 25px;
     color: #a92056;
     margin-right: 10px;
-
-
 }
 
 .fa-gem {
-        color: #a92056;
-
+    color: #a92056;
 }
 
 .links {
-
-  text-align: center;
-
+    text-align: center;
 }
 
 .flash {
-
     padding-top: 18px;
 }
 
-
 .well {
-
     background-color: #4c4151;
 }
 
 .q-description {
-
-
     background-color: #4c4151;
     padding: 30px;
     border-radius: 20px;
     border-style: groove;
-    border-color: aqua;    
-
-
+    border-color: aqua;
 }
 
-
-
 .q-title a {
-
-text-decoration: none; 
-color: whitesmoke; 
+    text-decoration: none;
+    color: whitesmoke;
 }
 
 .q-title {
-
     text-align: center;
     font-size: 23px;
 }
+
+.navicon {
+    padding-top: 5px;
+    
+}
+
+.navicon {
+    font-size: 17px;
+}
+
+.upvote-active a {
+
+    text-decoration: none;
+}
+
+
+.question-upvote {
+
+    text-decoration: none;
+
+}
+
+.voted-heart {
+    font-size: 23px;
+    text-decoration: none;
+    color:white;
+}
+
+
+.heart {
+      font-size: 17px;
+      color: white;
+
+  }
+
+  .voteicon a {
+
+    text-decoration: none;
+    color: yellowgreen;
+  }
+
+

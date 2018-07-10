@@ -1,10 +1,6 @@
 class AnswersController < ApplicationController
 
-    def new
-        @answer = Answer.new
-    end 
-
-    def create
+      def create
       @answer = Answer.new(answer_params)
       if @answer.save 
         flash[:success] = "You responded. Thanks for helping out!"
@@ -16,7 +12,7 @@ class AnswersController < ApplicationController
     end
 
     def voteup
-      answer = Answer.find(params[:answer_id]
+      answer = Answer.find(params[:id])
       answer.votes.create(user: current_user)
 
       flash[:success] = "Thanks #{currren_user.username} for voting!"
@@ -34,7 +30,7 @@ class AnswersController < ApplicationController
 
     private 
     def answer_params
-        params.require(:answer).permit(:question_id, :answer_id, :body, :user_id)
+        params.require(:answer).permit(:question_id, :answer_id, :body, :user_id, :votes)
     end
 end
 

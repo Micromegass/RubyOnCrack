@@ -107,15 +107,17 @@
          </div>
          <br>
          <% end %> <!--end comments path-->
-       <% end %> <!--end signed in-->
-     <% end %> <!--end each do-->
-    <!--finish form for Answer comments-->
+       <% end %> <!--end each do-->
+     <% end %> <!--end signed in-->
 
+     <% if !signed_in? %>
       <div class="voteicon">
-      <%= link_to "#{fa_icon("user-plus")} Login to Answer or to Comment".html_safe, login_path %>
-     </div>
-       <br>
-
+       <%= link_to "#{fa_icon("user-plus")} Login to Answer or to Comment".html_safe, login_path %>
+      </div>
+     <%end %>
+    
+    <!--finish form for Answer comments-->
+    <br>
     <% if @question.answers.count == 0 %>
     <p>Nobody could solve this problem up until now. We need your help. If you can answer please help out. Otherwise call a friend who knows</p>
     <% end %> <!--end question.answers.count-->

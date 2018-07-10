@@ -181,6 +181,7 @@ $dropDown: true;
 .q-description {
     background-color: #4c4151;
     padding: 30px;
+    padding-bottom: 15px;
     border-radius: 20px;
     border-style: groove;
     border-color: aqua;
@@ -236,4 +237,29 @@ $dropDown: true;
     color: aqua;
   }
 
+
+.index-icon-heart  {
+
+    float:right;
+    padding-right:10px;
+    
+}
+
+.index-icon-reply {
+    float: right;
+    padding-right: 10px;
+}
+
+.index-icon-heart i {
+    color: red;
+}
+
+.index-icon-reply i {
+    color: black;
+}
+
+.index-icon-child i {
+        color: black;
+
+}
 

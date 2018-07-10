@@ -6,15 +6,19 @@
    <div class="col-sm-10 col-sm-offset-1">
 <br>
 <% @questions.each do  |question| %>
-
   <div class="q-title">
    <%= link_to question.title, question %> 
   </div>
  <br> 
-  <div class="q-description">
-    <p> <%= question.description %> </p>
-  </div>
 
+  <div class="q-description">
+    <p> <%= question.description %> </p> 
+    <br>
+    <p class="divider"> -- </p>
+    <p class="index-icon-heart"> <%= question.votes.count %> <i class="fas fa-heartbeat"></i> 
+    <p class="index-icon-reply"> <%= question.answers.count %> <i class="fas fa-reply-all"></i>
+    <p class="index-icon-child"> <i class="fa fa-child" aria-hidden="true"></i> published by <%= question.user.username %> (<%= question.created_at.strftime("%Y-%m-%d")%>) </p>
+</div>
   <br>  <br>
 
 <% if signed_in? && question.user == current_user%>

@@ -10,6 +10,26 @@
     </div>
     <!-- end showing questions-->
 
+    <!--  showing votes questions-->
+    <% if signed_in? %>
+    <% if @question.voted_by? current_user%>
+    <%= link_to question_vote_path(@question), method: :delete, class: "product-upvote upvote-active" do %>
+    <span class="upvote-arrow"></span>
+    <span class="upvote-count"><%= @question.votes.count %></span>
+    <% end %>    <!--  end question vote path do-->
+    <% else %>   <!-- if not voted_by user-->
+    <%= link_to question_vote_path(@question), method: :post, class: "product-upvote" do %>
+    <span class="upvote-arrow"></span>
+    <span class="upvote-count"><%= @question.votes.count %></span>
+    <% end %>   <!--  question_vote_path do-->
+    <% end %>   <!-- end voted_by-->
+    <% else %>  <!--  if user is not signed in-->
+    <div class="voteicon">
+    <%= link_to "#{fa_icon("user-plus")} Login to Vote".html_safe, login_path %>
+    </div>
+    <% end  %> <!--  end signed_in-->
+    <!--  showing votes questions-->
+
     <!-- showing comments on questions-->
      <h3>Comments </h3>
     <% @question.comments.each do |comment| %>

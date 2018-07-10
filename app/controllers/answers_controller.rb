@@ -15,6 +15,22 @@ class AnswersController < ApplicationController
       end
     end
 
+    def voteup
+      answer = Answer.find(params[:answer_id]
+      answer.votes.create(user: current_user)
+
+      flash[:success] = "Thanks #{currren_user.username} for voting!"
+      redirect_to root_path
+    end 
+
+    def votedown
+      answer = Answer.find(params[:answer_id])
+      answer.votes.where(user: current_user).take.try(:destroy)
+
+      flash[:danger] = "Vote deleted"
+      redirect_to root_path
+    end 
+
 
     private 
     def answer_params

@@ -13,6 +13,7 @@ before_action :private_access, except: [:index, :show]
         @question = Question.find(params[:id])
         @answer = Answer.new        
         @comment = Comment.new
+        @vote = Vote.new
      end 
 
     def create
@@ -53,6 +54,26 @@ before_action :private_access, except: [:index, :show]
       redirect_to root_path
       end 
     end
+
+
+    def voteup
+      question = Question.find(params[:question_id])
+      question.votes.create(user: current_user)
+      flash[:success] = "Thanks for voting!"
+      redirect_to root_path
+    end 
+
+
+    def votedown
+      question = Question.find(params[:question_id])
+      question.votes.where(user: current_user).take.try(:destroy)
+      
+      flash[:danger] = "Vote deleted!"
+      redirect_to root_path
+
+    end 
+
+
 
     private
         def questions_params

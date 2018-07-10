@@ -17,6 +17,11 @@ validates :description, presence: true, length: {minimum:10, maximum:10000}
 belongs_to :user
 has_many :comments, as: :commentable, dependent: :destroy
 has_many :answers, dependent: :destroy
+has_many :votes, as: :voteable, dependent: :destroy
 
+
+def voted_by?(user)
+  votes.exists?(user: user)
+end
 
 end

@@ -7,7 +7,13 @@ Rails.application.routes.draw do
 
   resources :comments, only: [:create, :new]
   resources :users, only: [:new, :create]
-  resources :questions
-  resources :answers, only: [:create, :new] 
+  
+  resources :questions do 
+    resource :vote, only: [:new, :create, :destroy]
+  end 
+
+  resources :answers, only: [:create, :new] do 
+      resource :vote, only: [:new, :create, :destroy]
+  end 
 
 end

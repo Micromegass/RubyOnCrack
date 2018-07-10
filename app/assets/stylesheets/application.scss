@@ -36,8 +36,8 @@ html {
 // navbar styling
 $bgDefault: #a92056;
 $bgHighlight: #4c4151;
-$colDefault: #bbe8f4;
-$colHighlight: #ecdbff;
+$colDefault: azure;
+$colHighlight: aqua;
 $dropDown: true;
 .navbar-inverse {
     background-color: $bgDefault;
@@ -190,9 +190,13 @@ $dropDown: true;
 .q-title a {
     text-decoration: none;
     color: whitesmoke;
+        &:hover {
+            color: aqua;
+        }
+
 }
 
-.q-title {
+.q-title  {
     text-align: center;
     font-size: 23px;
 }
@@ -234,7 +238,7 @@ $dropDown: true;
   .voteicon a {
 
     text-decoration: none;
-    color: aqua;
+    color: azure;
   }
 
 

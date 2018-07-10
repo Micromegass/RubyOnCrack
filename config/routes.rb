@@ -14,6 +14,10 @@ Rails.application.routes.draw do
 
   resources :answers, only: [:create, :new] do 
       resource :vote, only: [:new, :create, :destroy]
+
+  post 'answers/:id/voteup' => 'answers#voteup', as: 'vote_answer'
+  post 'answers/:id/votedown' => 'answers#votedown', as: 'delete_vote_answer'
   end 
+
 
 end

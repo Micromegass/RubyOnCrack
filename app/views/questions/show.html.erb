@@ -60,13 +60,26 @@
     <% @question.answers.each do |answer| %>
         <div class="q-description"><%= answer.body %> </div>
      <!-- end of displaying answers-->
-
-
-
-
-    
-
-
+      <br>
+     
+     <!-- showing votes on answers-->
+     <%if signed_in? %>
+     <%if answer.votes.exists?(user: current_user) %>
+     <%= link_to delete_vote_answer_path(answer.id), method: :post, class: "question-upvote upvote-active" do %>
+     <div class="voted-heart"><i class="fas fa-heartbeat" style="color:red"></i> 
+     <%= answer.votes.count %></span></div>
+     <% end %>
+     <% else %>
+     <%= link_to vote_answer_path(answer.id), method: :post, class: "question-upvote" do %>
+     <div class="heart"><i class="far fa-heart" style="color:yellowgreen"></i> 
+    <%= answer.votes.count %></span></div>
+     <% end %>
+     <% end %>
+     <% else %>
+      <div class="voteicon">
+     <%= link_to "#{fa_icon("user-plus")} Login to Vote".html_safe, login_path %>
+      </div>
+     <% end %>
 
 
 
@@ -78,6 +91,7 @@
     </div>
      <% end  %><!--end answer.comments.each do-->
     <!-- end showing comments on answer-->
+   
 
     <!--form for the Answer comments-->
       <% if signed_in? && @question.answers.exists?%>
@@ -96,6 +110,11 @@
        <% end %> <!--end signed in-->
      <% end %> <!--end each do-->
     <!--finish form for Answer comments-->
+
+      <div class="voteicon">
+      <%= link_to "#{fa_icon("user-plus")} Login to Answer or to Comment".html_safe, login_path %>
+     </div>
+       <br>
 
     <% if @question.answers.count == 0 %>
     <p>Nobody could solve this problem up until now. We need your help. If you can answer please help out. Otherwise call a friend who knows</p>

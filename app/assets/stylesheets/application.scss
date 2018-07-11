@@ -157,8 +157,8 @@ $dropDown: true;
 }
 
 .links a {
-    font-size: 25px;
-    color: #a92056;
+    font-size: 20px;
+    color: yellowgreen;
     margin-right: 10px;
 }
 
@@ -273,3 +273,21 @@ $dropDown: true;
 
 }
 
+.searchbar {
+
+    float: right;
+    color:black;
+    padding-top: 15px;
+    margin-bottom:10px;
+   
+}
+
+.formtag {
+
+    border-radius:5px;
+}
+
+.fa-binoculars {
+
+    color:black;
+}

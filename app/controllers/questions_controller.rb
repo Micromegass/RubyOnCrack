@@ -2,8 +2,12 @@ class QuestionsController < ApplicationController
 before_action :private_access, except: [:index, :show]
 
     def index
-      @questions = Question.all 
-    end
+      @questions = if params[:term]
+      Question.where("title iLIKE ? OR description iLIKE ?" , "%#{params[:term]}%", "%#{params[:term]}%")
+      else 
+      @questions = Question.all.order("created_at DESC")
+      end
+    end 
 
     def new
       @question = Question.new
@@ -78,7 +82,7 @@ before_action :private_access, except: [:index, :show]
 
     private
         def questions_params
-            params.require(:question).permit(:title, :description, :answer_id, :user_id, :body, :votes)
+            params.require(:question).permit(:title, :description, :answer_id, :user_id, :body, :votes, :term)
         end 
 
 end

@@ -56,11 +56,18 @@
               <li><%= link_to "#{fa_icon("chess-queen")} Login".html_safe, login_path  %></li>
               <% end %>
                 </ul>
-           <form class="navbar-form navbar-right" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
-            </div>
-          </form>
+               <div class="searchbar">
+              <%= form_tag(questions_path, method: :get, class: 'formtag') do %>
+                 <span class="textfield"><%= text_field_tag :term %> </span>
+                 <%= button_tag(type: "submit", class: "btn btn-info") do %>
+                 <i class="fa fa-binoculars" aria-hidden="true"></i>
+                <% end %>
+              <% end %>
+              </div>
+     
+ 
+            
+          
         </div><!-- /.navbar-collapse -->
       </div>
     </div>

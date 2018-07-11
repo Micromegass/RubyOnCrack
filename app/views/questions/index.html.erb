@@ -7,12 +7,12 @@
 <br>
 <% @questions.each do  |question| %>
   <div class="q-title">
-   <%= link_to question.title, question %> 
+   <%= link_to markdown(question.title), question %> 
   </div>
  <br> 
 
   <div class="q-description">
-    <p> <%= question.description %> </p> 
+    <p> <%= markdown(question.description) %> </p> 
     <br> <br>
     <p class="index-icon-heart"> <%= question.votes.count %> <i class="fas fa-heartbeat"></i> 
     <p class="index-icon-reply"> <%= question.answers.count %> <i class="fas fa-reply-all"></i>

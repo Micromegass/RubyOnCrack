@@ -14,15 +14,14 @@ class QuestionsController < ApplicationController
     end
 
      def create
-      @question = Question.new(questions_params)
-      @question.user = current_user
+      @question = current_user.questions.build(questions_params)
       if @question.save
-        flash[:success] = "Fantastic #{@current_user.username} you posed a new question. Surely someone answers soon, stay tuned..."
-        redirect_to root_path
-      else
-         render :new
+      flash[:success] = "Fantastic #{@current_user.username} you posed a new question. Surely someone answers soon, stay tuned..."
+      redirect_to root_path
+       else
+     render :new
       end
-    end
+     end
 
      def show
         @question = Question.find(params[:id])

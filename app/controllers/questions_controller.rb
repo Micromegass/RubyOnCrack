@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
       @questions = if params[:term]
       Question.where("title iLIKE ? OR description iLIKE ?" , "%#{params[:term]}%", "%#{params[:term]}%")
       else 
-      @questions = Question.all.order("created_at DESC")
+      @questions = Question.all.order("updated_at DESC")
       end
     end 
 
@@ -60,7 +60,7 @@ class QuestionsController < ApplicationController
 
 
     def voteup
-      question = Question.find(params[:question_id])
+      question = Question.find(params[:id])
       question.votes.create(user: current_user)
 
       flash[:success] = "Thanks #{current_user.username} for voting!"
@@ -69,7 +69,7 @@ class QuestionsController < ApplicationController
 
 
     def votedown
-      question = Question.find(params[:question_id])
+      question = Question.find(params[:id])
       question.votes.where(user: current_user).take.try(:destroy)
       
       flash[:danger] = "Vote deleted!"

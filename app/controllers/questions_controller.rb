@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
-before_action :private_access, except: [:index, :show]
+  before_action :authenticate_user!, :except => [:show, :index]
+  before_action :private_access, except: [:index, :show]
 
     def index
       @questions = if params[:term]
@@ -13,14 +14,7 @@ before_action :private_access, except: [:index, :show]
       @question = Question.new
     end
 
-     def show
-        @question = Question.find(params[:id])
-        @answer = Answer.new        
-        @comment = Comment.new
-        @vote = Vote.new
-     end 
-
-    def create
+     def create
       @question = Question.new(questions_params)
       @question.user = current_user
       if @question.save
@@ -31,6 +25,12 @@ before_action :private_access, except: [:index, :show]
       end
     end
 
+     def show
+        @question = Question.find(params[:id])
+        @answer = Answer.new        
+        @comment = Comment.new
+        @vote = Vote.new
+     end 
 
     def edit
       @question = Question.find(params[:id])

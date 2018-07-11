@@ -17,5 +17,5 @@ class Comment < ApplicationRecord
 
 
     validates :body, presence: true
-    validates :commentable_type, :commentable_id, :user_id, :body, presence: :true
+    validates :commentable_type, :commentable_id, :user_id, :body, presence: true
 end

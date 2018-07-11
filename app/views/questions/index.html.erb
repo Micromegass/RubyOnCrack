@@ -12,7 +12,8 @@
  <br> 
 
   <div class="q-description">
-    <p> <%= markdown(question.description) %> </p> 
+
+    <p> <%= markdown(truncate(question.description, :length => 250 , :seperator => ' '))%> </p> 
     <br> <br>
     <p class="index-icon-heart"> <%= question.votes.count %> <i class="fas fa-heartbeat"></i> 
     <p class="index-icon-reply"> <%= question.answers.count %> <i class="fas fa-reply-all"></i>

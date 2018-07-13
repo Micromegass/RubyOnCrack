@@ -4,16 +4,11 @@
     <title>RubyOnCrack</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-
   </head>
-
-  <body>
-
-
+<body>
 <nav class="custom navbar-inverse navbar-fixed-top">
   <div class="container">
     <div class="row">
@@ -32,12 +27,7 @@
           <%= link_to "Ruby on Crack", root_path, class: "navbar-brand" %>
           <% end %>
         </div>
-
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-
-          </ul>
           <ul class="nav navbar-nav navbar-left">
               <% if signed_in? %>
             <li>
@@ -55,25 +45,20 @@
               <li><%= link_to "#{fa_icon("user-circle")} Register".html_safe, new_user_path %> </li>
               <li><%= link_to "#{fa_icon("chess-queen")} Login".html_safe, login_path  %></li>
               <% end %>
-                </ul>
-               <div class="searchbar">
-              <%= form_tag(questions_path, method: :get, class: 'formtag') do %>
+            </ul>
+              <div class="searchbar">
+                 <%= form_tag(questions_path, method: :get, class: 'formtag') do %>
                  <span class="textfield"><%= text_field_tag :term %> </span>
                  <%= button_tag(type: "submit", class: "btn btn-info") do %>
                  <i class="fa fa-binoculars" aria-hidden="true"></i>
                 <% end %>
               <% end %>
-              </div>
-     
- 
-            
-          
+            </div>
         </div><!-- /.navbar-collapse -->
       </div>
     </div>
   </div><!-- /.container -->
 </nav>
-
 
 <div class="flash">
   <% flash.each do |key, value| %>
@@ -81,6 +66,7 @@
   <% end %>
 </div>
 
-    <%= yield %>
-  </body>
+  <%= yield %>
+
+ </body>
 </html>
